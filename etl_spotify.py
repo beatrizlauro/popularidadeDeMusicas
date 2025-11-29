@@ -86,7 +86,7 @@ def realizar_etl_spotify(caminho_arquivo):
     if 'track_genre' in df.columns:
         le = LabelEncoder()
         df['genre_encoded'] = le.fit_transform(df['track_genre'])
-        df = df.drop(columns=['track_genre'])
+        # df = df.drop(columns=['track_genre'])
         resumo_etl['Codificação track_genre'] = 'Label Encoding'
         
     # Normalização/Escalonamento de Features Numéricas
