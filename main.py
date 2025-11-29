@@ -1,5 +1,6 @@
 from etl_spotify import realizar_etl_spotify
 from eda import perform_eda
+from modelagem import perform_modeling
 
 # Caminhos dos arquivos
 caminho_dataset = 'arquivoOriginal/dataset.csv'
@@ -20,3 +21,19 @@ print("DataFrame transformado salvo em 'spotify_tracks_transformed.csv'")
 
 # --- EDA ---
 df_final = perform_eda('spotify_tracks_transformed.csv', caminho_saida_eda)
+
+# --- Modelagem e Machine Learning ---
+model_results = perform_modeling('spotify_tracks_transformed.csv', caminho_saida_eda)
+
+print("\n" + "="*50)
+print("RESULTADOS DA MODELAGEM")
+print("="*50)
+for nome, resultados in model_results.items():
+    print(f"\nModelo: {nome}")
+    print(f"  R²: {resultados['R2']:.4f}")
+    print(f"  RMSE: {resultados['RMSE']:.4f}")
+    if 'Feature Importances' in resultados:
+        print("  Top 5 Importâncias de Features:")
+        top_5 = list(resultados['Feature Importances'].items())[:5]
+        for feature, importance in top_5:
+            print(f"    - {feature}: {importance:.4f}")
