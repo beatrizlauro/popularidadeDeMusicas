@@ -30,7 +30,25 @@ O projeto busca unir a análise técnica com um contexto cultural e criativo, pr
 ---
 
 ## 🧩 Estrutura do Projeto
-a definir
+popularidadeDeMusicas/
+│
+├── arquivoOriginal/               # Arquivos originais do dataset
+├── data/                          # Dados transformados (CSV limpos)
+│   └── spotify_tracks_transformed.csv
+│
+├── src/                           # Scripts principais do projeto
+│   ├── etl_spotify.py             # Processo de ETL
+│   ├── eda.py                     # Análise exploratória
+│   ├── modelagem.py               # Modelos de machine learning
+│   └── main.py                    # Execução geral do pipeline
+│
+├── notebooks/
+│   └── Untitled0.ipynb            # Notebook Jupyter com análises
+│
+├── results/                       # Gráficos, tabelas e resultados finais
+│
+├── README.md                      # Documentação principal
+└── requirements.txt (opcional)
 
 ---
 
@@ -52,7 +70,23 @@ Classificação (categorizar músicas como “populares” ou “não populares�
 
 ## 🧰 Tecnologias Utilizadas
 
-a definir
+Python 3.10
+
+Pandas
+
+NumPy
+
+Matplotlib
+
+Seaborn
+
+Scikit-Learn
+
+Random Forest Regressor
+
+XGBoost Regressor
+
+Jupyter Notebook
 
 ---
 
@@ -65,7 +99,19 @@ a definir
 ---
 
 ## 📘 Documentação Complementar
-a definir
+Além do repositório, foi elaborado um PDF explicativo, contendo:
+
+Introdução
+
+Metodologia detalhada
+
+Gráficos e análises
+
+Avaliação dos modelos
+
+Conclusão
+
+📎 O arquivo está disponível em:
 
 ---
 
