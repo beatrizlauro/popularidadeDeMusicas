@@ -1,10 +1,12 @@
 from etl_spotify import realizar_etl_spotify
 from eda import perform_eda
 from modelagem import perform_modeling
+import os
 
 # Caminhos dos arquivos
 caminho_dataset = 'arquivoOriginal/dataset.csv'
 caminho_saida_eda = 'results'
+caminho_saida_csv = 'spotify_tracks_transformed.csv'
 
 # --- ETL ---
 df_limpo, resumo = realizar_etl_spotify(caminho_dataset)
@@ -16,14 +18,14 @@ for chave, valor in resumo.items():
     print(f"{chave}: {valor}")
 
 # Salvar o DataFrame transformado
-df_limpo.to_csv('spotify_tracks_transformed.csv', index=False)
-print("DataFrame transformado salvo em 'spotify_tracks_transformed.csv'")
+df_limpo.to_csv(os.path.join(os.getcwd(), caminho_saida_csv), index=False) # <-- Use esta linha
+print(f"DataFrame transformado salvo em '{caminho_saida_csv}'")
 
 # --- EDA ---
-df_final = perform_eda('spotify_tracks_transformed.csv', caminho_saida_eda)
+df_final = perform_eda(caminho_saida_csv, caminho_saida_eda)
 
 # --- Modelagem e Machine Learning ---
-model_results = perform_modeling('spotify_tracks_transformed.csv', caminho_saida_eda)
+model_results = perform_modeling(caminho_saida_csv, caminho_saida_eda)
 
 print("\n" + "="*50)
 print("RESULTADOS DA MODELAGEM")
